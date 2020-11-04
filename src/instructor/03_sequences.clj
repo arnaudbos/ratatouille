@@ -21,6 +21,8 @@
 
 (take 5 (range))
 
+(take 5 [1 2 3 4 5 6 7])
+
 (take 5 (drop 5 (range)))
 
 ;; Clojure has an excellent sequence abstraction that fits naturally into the language.
@@ -44,7 +46,8 @@
 
 ;;Remember, since keywords are functions, you don’t need to create a function to call get.
 
-(map (fn [m] (get m :a)) [{:a 1} {:a 2} {:a 3}])
+(map (fn [m] (get m :a))
+     [{:a 1} {:a 2} {:a 3}])
 
 ;; Can instead be written as:
 
@@ -53,6 +56,8 @@
 ;; Where we are looking up the value associated with :a for each element in a vector of maps.
 
 ;; map can take multiple sequences from which to pull arguments for the input function:
+
+(map + [1 2])
 
 (map +
      [1 3]

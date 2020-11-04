@@ -57,6 +57,7 @@
 ;; and get a new value back
 
 (update user :age inc)
+user
 
 ;; Since values are immutable, the result of an update should be stored somewhere
 ;; in order to keep track of it
@@ -72,6 +73,7 @@
                   :age 31}))
 
 ;; We can read current state of the atom by dereferencing it (taking a value by reference)
+(deref user')
 @user'
 
 ;; Updating state of the atom is done in a functional manner
@@ -80,7 +82,7 @@
 ;; Or setting a new value directly
 (reset! user' {:first-name "John"
                :last-name "Doe"
-               :age 32})
+               :age 33})
 
 ;; Now a new value is stored in the atom
 @user'

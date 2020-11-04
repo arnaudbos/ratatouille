@@ -16,7 +16,7 @@ but only the fearless can be great."
 \r \a \t \o \u \i \l \e \newline \tab
 
 ;; Numbers can be Long
-1
+1 2 3
 
 ;; Double
 3.14

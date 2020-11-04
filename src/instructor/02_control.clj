@@ -28,17 +28,29 @@
 
 ;; The symbol x is bound to the value 1, and the function inc is called on x, resulting in 2.
 
+(def x 1)
+(def y 2)
+(def x (inc x))
+x
+
 (let [x 1
       y 2
-      x (+ x 1)]
+      x (+ x 1)
+      a 42]
   (+ x y)
-  (* x x))
+  (* x x)
+  a)
 
 ;; The binding scope is within the parentheses enclosing the let form, and will
 ;; shadow any existing bindings.
 
 ;; Destructuring is providing a literal data structure containing symbols that get bound
 ;; to the respective parts of a value with a matching structure.
+
+(let [v [1 2]
+      x (first v)
+      y (second v)]
+  [x y])
 
 (let [[x y] [1 2]]
   (+ x y))
@@ -184,12 +196,23 @@
 ;; a function that consumes some arguments that can be used with additional arguments later:
 
 (partial + 1)
+((partial + 1) 4)
+(+ 1 4)
+
+
+(def add-4 (partial + 4))
+
+(add-4)
+
+((constantly 4))
 
 ;; Creates a function that adds 1 to any number of arguments supplied.
 ;; It returns a function that is equivalent to:
 
-(fn [& args]
-  (apply + 1 args))
+(def plop (fn [& args]
+            (println args)
+            (apply + 1 args)))
+(plop 3 4 5)
 
 ;; So let’s see how we might make use of that:
 

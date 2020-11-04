@@ -37,10 +37,15 @@
 
 ;; Because keywords are functions, it’s quite common to use a keyword as a dispatch function.
 
-(defmulti draw :shape)
+(defmulti draw (fn [x] (:shape x)))
 
 ;; Clojure offers other ways to express polymorphism, some of them
 ;; play well with Java interop, some others go beyond what' possible
 ;; to express ni Java's type system (expression problem).
 ;; The most common way after multimethods are named "Protocols", however
 ;; we con't cover them in this workshop.
+
+(defmethod draw :circle [x] "circle")
+(defmethod draw :square [x] "square")
+
+(draw {:shape :square})
